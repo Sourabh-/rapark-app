@@ -1,12 +1,38 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>Pay</ion-title>
+  <ion-navbar color="green">
+    <ion-title>
+      <ion-icon name="cash" class="header-icon"></ion-icon>&nbsp; Pay
+    </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="utilityService.openModal($event)">
+      <button ion-button icon-only (click)="openModal($event)">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="card-background-page dark-content">
+  <br/>
+  <div *ngIf="!showPayment">
+    <form (ngSubmit)="getAmount(paymentForm)" #paymentForm="ngForm" novalidate>
+      <ion-list class="dark-list">
+        <ion-item class="dark-item">
+          <ion-label stacked>OTP</ion-label>
+          <ion-input type="number" name="otp" [(ngModel)]="payment.otp" required></ion-input>
+        </ion-item>
+      </ion-list>
+      <div padding>
+        <button type="submit" ion-button color="green" block [disabled]="paymentForm.invalid">Get Amount</button>
+      </div>
+    </form>
+  </div>
+  <div *ngIf="showPayment">
+    <ion-card>
+      <img src="assets/imgs/pay.png" />
+      <div class="card-title">{{vehicle.phoneNumber || '-'}}</div>
+      <div class="card-subtitle">&#8377; {{vehicle.amount}}</div>
+    </ion-card>
+    <div padding>
+      <button ion-button color="green" block (click)="reset()">Paid</button>
+    </div>
+  </div>
 </ion-content>

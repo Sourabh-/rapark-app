@@ -1,3 +1,15 @@
 app-park {
+	.fab-img {
+		width: 32px;
+		height: 32px;
+	}
 
+	.park-title .toolbar-title {
+		display: flex;
+	}
+
+	.park-title .toolbar-title div {
+		margin-top: 4px;
+		margin-left: 4px;
+	}
 }

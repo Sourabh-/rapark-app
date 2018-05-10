@@ -6,6 +6,7 @@ import { IonicModule } from 'ionic-angular';
 import { SettingsComponent } from './components/settings/settings.component';
 
 import { UtilityService } from './services/utility.service';
+import { HttpService } from './services/http.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,7 @@ import { UtilityService } from './services/utility.service';
   exports: [
   	SettingsComponent
   ],
-  providers: [ UtilityService ]
+  providers: [ UtilityService, HttpService ]
 })
 export class SharedModule {
   

@@ -1,8 +1,11 @@
 <ion-header>
-  <ion-toolbar color="secondary">
+  <ion-toolbar color="green">
     <ion-title>
-      Settings
+      <ion-icon name="settings" class="header-icon"></ion-icon>&nbsp; {{heading}} Settings
     </ion-title>
+    <ion-buttons start>
+      <ion-toggle color="energized" [(ngModel)]="isCar" (ngModelChange)="switchType($event)"></ion-toggle>
+    </ion-buttons>
     <ion-buttons start>
       <button ion-button (click)="dismiss()">
         <span ion-text color="primary" showWhen="ios">Cancel</span>
@@ -11,5 +14,32 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
-<ion-content></ion-content>
+<ion-content class="dark-content">
+  <br/>
+  <form (ngSubmit)="saveNewSettings(settingsForm)" #settingsForm="ngForm" novalidate>
+    <ion-list class="dark-list">
+      <ion-item class="dark-item">
+        <ion-label stacked>First 2 Hours</ion-label>
+        <ion-input type="number" [(ngModel)]="settings.first2Hours" name="firstHour" required></ion-input>
+      </ion-item>
+      <ion-item class="dark-item">
+        <ion-label stacked>Additional Hours</ion-label>
+        <ion-input type="text" [(ngModel)]="settings.additionalHour" name="additionalHour" required></ion-input>
+      </ion-item>
+      <ion-list-header class="custom-header dark-list-header">
+        Custom Charges
+      </ion-list-header>
+      <ion-item class="dark-item">
+        <ion-label stacked>Hours</ion-label>
+        <ion-input type="number" [(ngModel)]="settings.customCharges.hours" name="hours"></ion-input>
+      </ion-item>
+      <ion-item class="dark-item">
+        <ion-label stacked>Amount</ion-label>
+        <ion-input type="number" [(ngModel)]="settings.customCharges.amount" name="amount"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button type="submit" ion-button color="green" block [disabled]="settingsForm.invalid">Save</button>
+    </div>
+  </form>
+</ion-content>

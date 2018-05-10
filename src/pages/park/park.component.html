@@ -1,14 +1,39 @@
 <ion-header>
-  <ion-navbar color="secondary">
-    <ion-title>
-      Park
+  <ion-navbar color="green">
+    <ion-title class="park-title">
+      <img *ngIf="!isCar" src="assets/imgs/motorcycle.png" class="fab-img" />
+      <img *ngIf="isCar" src="assets/imgs/car.png" class="fab-img" />
+      &nbsp; 
+      <div>{{heading}} Park</div>
     </ion-title>
     <ion-buttons end>
-      <button ion-button icon-only (click)="utilityService.openModal($event)">
+      <button ion-button icon-only (click)="openModal($event)">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
   </ion-navbar>
 </ion-header>
-<ion-content>
+<ion-content class="dark-content">
+  <br/>
+  <form (ngSubmit)="sendOTP(parkForm)" #parkForm="ngForm" novalidate>
+    <ion-list class="dark-list">
+      <ion-item class="dark-item">
+        <ion-label stacked>Phone Number</ion-label>
+        <ion-input type="number" (keypress)="keyPress($event)" [(ngModel)]="vehicle.phoneNumber" name="phoneNumber" required pattern="[6789][0-9]{9}"></ion-input>
+      </ion-item>
+      <ion-item class="dark-item">
+        <ion-label stacked>Reg. Number</ion-label>
+        <ion-input type="text" [(ngModel)]="vehicle.regNo" name="regNo" (ngModelChange)="changeCase($event)"></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+      <button type="submit" ion-button color="green" block [disabled]="parkForm.invalid">Send OTP</button>
+    </div>
+  </form>
+  <ion-fab right bottom>
+    <button ion-fab color="green" (click)="switchType()">
+      <img *ngIf="isCar" src="assets/imgs/motorcycle.png" class="fab-img" />
+      <img *ngIf="!isCar" src="assets/imgs/car.png" class="fab-img" />
+    </button>
+  </ion-fab>
 </ion-content>

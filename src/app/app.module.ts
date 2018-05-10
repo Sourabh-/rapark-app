@@ -6,6 +6,7 @@ import { MyApp } from './app.component';
 import { ParkComponent } from '../pages/park/park.component';
 import { PayComponent } from '../pages/pay/pay.component';
 import { TabsComponent } from '../pages/tabs/tabs.component';
+import { SliderComponent } from '../pages/slides/slides.component';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,7 +18,8 @@ import { SharedModule } from '../shared/shared.module';
     MyApp,
     ParkComponent,
     PayComponent,
-    TabsComponent
+    TabsComponent,
+    SliderComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { SharedModule } from '../shared/shared.module';
     MyApp,
     ParkComponent,
     PayComponent,
-    TabsComponent
+    TabsComponent,
+    SliderComponent
   ],
   providers: [
     StatusBar,
