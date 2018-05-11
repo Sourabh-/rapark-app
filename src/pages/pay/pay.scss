@@ -1,5 +1,14 @@
 app-pay {
-	.card-title, .card-subtitle {
-		color: #000;
+	.card-title, .card-subtitle, .time-section {
+		color: #FFF;
+	}
+
+	.time-section {
+		position: absolute;
+	    top: 2%;
+    	left: 35%;
+	    font-size: 1.0em;
+	    width: 100%;
+	    font-weight: bold;
 	}
 }

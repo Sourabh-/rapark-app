@@ -28,6 +28,7 @@
   <div *ngIf="showPayment">
     <ion-card>
       <img src="assets/imgs/pay.png" />
+      <div class="time-section">{{vehicle.time}}</div>
       <div class="card-title">{{vehicle.phoneNumber || '-'}}</div>
       <div class="card-subtitle">&#8377; {{vehicle.amount}}</div>
     </ion-card>
