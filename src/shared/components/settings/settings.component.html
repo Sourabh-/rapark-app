@@ -24,7 +24,7 @@
       </ion-item>
       <ion-item class="dark-item">
         <ion-label stacked>Additional Hours</ion-label>
-        <ion-input type="text" [(ngModel)]="settings.additionalHour" name="additionalHour" required></ion-input>
+        <ion-input type="number" [(ngModel)]="settings.additionalHour" name="additionalHour" required></ion-input>
       </ion-item>
       <ion-list-header class="custom-header dark-list-header">
         Custom Charges
@@ -42,4 +42,9 @@
       <button type="submit" ion-button color="green" block [disabled]="settingsForm.invalid">Save</button>
     </div>
   </form>
+  <ion-fab right bottom>
+    <button ion-fab color="green" (click)="showKeyPrompt()">
+      <ion-icon name="key"></ion-icon>
+    </button>
+  </ion-fab>
 </ion-content>

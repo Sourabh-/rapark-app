@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ViewController } from 'ionic-angular';
+import { ViewController, AlertController } from 'ionic-angular';
 
 import { UtilityService } from '../../services/utility.service';
 import { HttpService } from '../../services/http.service';
@@ -17,9 +17,10 @@ export class SettingsComponent implements OnInit {
   public heading: string = 'Four Wheeler';
 
   constructor(
- 	public viewCtrl: ViewController,
+ 	  public viewCtrl: ViewController,
   	public httpService: HttpService,
-  	public utilityService: UtilityService
+  	public utilityService: UtilityService,
+    public alertCtrl: AlertController
   ) {}
 
   dismiss() {
@@ -83,6 +84,40 @@ export class SettingsComponent implements OnInit {
   switchType(ev) {
     this.heading = this.isCar ? 'Four Wheeler' : 'Two Wheeler';
     this.getSettings(this.isCar ? 'FOUR_WHEELER' : 'TWO_WHEELER');
+  }
+
+  showKeyPrompt() {
+    let key = localStorage.authKey || '';
+    let prompt = this.alertCtrl.create({
+      message: "Enter Key provided by RaPark",
+      inputs: [
+        {
+          name: 'Key',
+          placeholder: 'Key',
+          value: (key + '')
+        },
+      ],
+      buttons: [
+        {
+          text: 'Cancel',
+          cssClass: 'dark-fg',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Save',
+          cssClass: 'dark-fg',
+          handler: data => {
+            localStorage.authKey = data.Key;
+            console.log('Saved clicked');
+            this.getSettings('TWO_WHEELER');
+            this.getSettings('FOUR_WHEELER');
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
   
 }

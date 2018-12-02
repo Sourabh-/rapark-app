@@ -20,10 +20,16 @@
       <ion-item class="dark-item">
         <ion-label stacked>Phone Number</ion-label>
         <ion-input type="number" (keypress)="keyPress($event)" [(ngModel)]="vehicle.phoneNumber" name="phoneNumber" required pattern="[6789][0-9]{9}"></ion-input>
+        <button class="right-icon-button" ion-button clear type="button" item-right> 
+          <ion-icon name="call"> </ion-icon> 
+        </button>
       </ion-item>
       <ion-item class="dark-item">
         <ion-label stacked>Reg. Number</ion-label>
         <ion-input type="text" [(ngModel)]="vehicle.regNo" name="regNo" (ngModelChange)="changeCase($event)"></ion-input>
+        <button class="right-icon-button" ion-button clear type="button" item-right> 
+          <ion-icon name="car"> </ion-icon> 
+        </button>
       </ion-item>
     </ion-list>
     <div padding>
